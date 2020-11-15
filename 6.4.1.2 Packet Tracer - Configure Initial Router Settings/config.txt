@@ -1,0 +1,14 @@
+!PCA
+en
+conf t
+ho R1
+line console 0
+login
+password letmein
+enable password cisco
+enable secret itsasecret
+service password-encryption
+banner motd /Unauthorized access is strictly prohibited./
+
+do wr
+do copy start flash

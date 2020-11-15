@@ -1,0 +1,39 @@
+!Room-145
+en
+conf t
+ho Room-145
+line console 0
+login
+password R4Xe3
+enable secret C4aJa
+service password-encryption
+banner motd /warning/
+line vty 0 15
+password R4Xe3
+
+int vlan 1
+ip address 10.10.10.100 255.255.255.0
+no shut
+exit
+ 
+do wr
+
+!Room-146
+en
+conf t
+ho Room-146
+line console 0
+login
+password R4Xe3
+enable secret C4aJa
+service password-encryption
+banner motd /warning/
+line vty 0 15
+password R4Xe3
+
+int vlan 1
+ip address 10.10.10.150 255.255.255.0
+no shut
+exit
+ 
+do wr

@@ -1,0 +1,13 @@
+!MLSw1
+en
+conf t
+ho MLSw1
+
+int g0/1
+no switchport
+ip address 192.168.0.2 255.255.255.0
+no shut
+int vlan 1
+ip address 172.16.31.1 255.255.255.0
+no shut
+exit

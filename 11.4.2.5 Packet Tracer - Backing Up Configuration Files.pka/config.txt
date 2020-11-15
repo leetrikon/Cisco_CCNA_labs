@@ -1,0 +1,31 @@
+!RTA
+en
+conf t
+
+int g0/0
+ip address 172.16.1.1 255.255.255.0
+no shut
+exit
+int g0/1
+no shut
+exit
+end
+
+copy tftp: run
+172.16.1.2
+RTA-config
+
+conf t
+ho RTA-1
+do wr
+end
+
+copy run tftp:
+172.16.1.2
+
+
+copy flash tftp:
+c1900-universalk9-mz.SPA.151-4.M4.bin
+172.16.1.2
+
+

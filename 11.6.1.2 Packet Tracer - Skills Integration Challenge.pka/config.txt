@@ -1,0 +1,26 @@
+!Main
+en
+conf t
+hostname Main
+service password-encryption
+line console 0
+enable secret QWEasd123
+
+ip domain-name Main
+username user password QWEasd12345678
+login block-for 180 attempts 4 within 120
+
+int g0/0
+ip address 172.16.31.1 255.255.255.0
+no shut
+exit
+
+crypto key generate rsa
+1024
+
+line vty 0 15
+login local
+transport input ssh
+exit
+
+do wr

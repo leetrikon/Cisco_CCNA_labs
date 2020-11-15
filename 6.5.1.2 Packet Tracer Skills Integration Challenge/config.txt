@@ -1,0 +1,67 @@
+!Проблема 1
+На Manager-A и Reception-A не установлен основной шлюз.
+Решение:
+Установить 10.10.10.1 в качестве основного шлюза.
+
+!Проблема 2
+На Manager-B и Reception-B не установлен основной шлюз.
+Решение:
+Установить 10.10.11.1 в качестве основного шлюза.
+
+!Проблема 3
+На Reception-B установлен неверный IP-адрес.
+Решение:
+Поменять IP-адрес на 10.10.11.102
+
+!Floor14
+en
+conf t
+ho Floor14
+line console 0
+login
+password cisco
+enable secret class
+service password-encryption
+banner motd /!WARNING!/
+line vty 0 15
+login
+password cisco
+exit
+
+int g0/0
+ip address 10.10.10.1 255.255.255.0
+description An interface to A side.
+no shut
+exit
+int g0/1
+ip address 10.10.11.1 255.255.255.0
+description An interface to B side.
+no shut
+exit
+
+do wr
+
+!Room-146
+en
+conf t
+ho Room-146
+line console 0
+login
+password cisco
+enable secret class
+service password-encryption
+banner motd /!WARNING!/
+line vty 0 15
+login
+password cisco
+exit
+
+ip default-gateway 10.10.11.1
+
+int vlan 1
+ip address 10.10.11.100 255.255.255.0
+description A vlan interface.
+no shut
+exit
+
+do wr

@@ -1,0 +1,25 @@
+!Branch1
+en
+conf t
+
+int g0/1
+ip address 192.168.72.97 255.255.255.224
+no shut
+exit
+int g0/0
+ip address 192.168.72.129 255.255.255.240
+no shut
+exit
+
+!Room-312
+en
+conf t
+
+ip de 192.168.72.65
+
+int vlan 1
+ip address 192.168.72.66 255.255.255.224
+no shut
+exit
+
+!PC-D

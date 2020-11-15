@@ -1,0 +1,60 @@
+!Branch-A
+en
+conf t
+ho Branch-A
+banner motd /warning/
+line console 0
+login
+password cisco
+enable secret class
+line vty 0 15
+login
+password cisco
+exit
+service password-encryption
+
+int g0/0
+ip address 172.20.16.1 255.255.254.0
+no shut
+exit
+int g0/1
+ip address 172.20.18.1 255.255.255.0
+no shut
+exit
+int g0/2
+ip address 172.20.31.254 255.255.255.252
+no shut
+exit
+
+!Branch-B
+en
+conf t
+ho Branch-B
+banner motd /warning/
+line console 0
+login
+password cisco
+enable secret class
+line vty 0 15
+login
+password cisco
+exit
+service password-encryption
+
+ipv6 unicast-routing
+
+int g0/0
+ipv6 address 2001:DB8:FADE:00FF::1/64
+ipv6 address FE80::B link-local
+no shutdown
+exit
+int g0/1
+ipv6 address 2001:DB8:FADE:0100::1/64
+ipv6 address FE80::B link-local
+no shutdown
+exit
+int g0/2
+ipv6 address 2001:DB8:FFFF:FFFF::2/64
+ipv6 address FE80::B link-local
+no shutdown
+exit

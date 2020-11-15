@@ -1,0 +1,27 @@
+!S1
+en
+conf t
+ho S1
+line console 0
+login
+password cisco
+enable secret class
+banner motd /Authorized access only. Violators will be prosecuted to the full extent of the law./
+int vlan 1
+ip address 192.168.1.253 255.255.255.0
+no shut
+do wr
+
+!S2
+en
+conf t
+ho S2
+line console 0
+login
+password cisco
+enable password class
+banner motd /Authorized access only. Violators will be prosecuted to the full extent of the law./
+int vlan 1
+ip address 192.168.1.254 255.255.255.0
+no shut
+do wr
